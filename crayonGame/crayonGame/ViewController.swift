@@ -26,7 +26,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func pressedStartBtn(_ sender: Any) {
-        print("Game Start")
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlayVC") as? PlayViewController else{
+            return
+        }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func pressedExplainBtn(_ sender: Any) {

@@ -82,6 +82,43 @@
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="65.625"/>
         </scene>
+        <!--Play View Controller-->
+        <scene sceneID="8xH-De-sxE">
+            <objects>
+                <viewController storyboardIdentifier="PlayVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hSk-yC-dCy" customClass="PlayViewController" customModule="crayonGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SZ7-Jr-gu7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crayon_gamebackground" translatesAutoresizingMaskIntoConstraints="NO" id="A2A-Mz-1Qu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-Em-zaq">
+                                <rect key="frame" x="25" y="66" width="65" height="33"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hci-Bh-fQt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="A2A-Mz-1Qu" secondAttribute="bottom" id="E7c-ho-xox"/>
+                            <constraint firstItem="Uyd-Em-zaq" firstAttribute="leading" secondItem="hci-Bh-fQt" secondAttribute="leading" constant="25" id="HH7-KB-cpd"/>
+                            <constraint firstItem="Uyd-Em-zaq" firstAttribute="top" secondItem="hci-Bh-fQt" secondAttribute="top" constant="22" id="cbX-zY-kYz"/>
+                            <constraint firstItem="A2A-Mz-1Qu" firstAttribute="top" secondItem="SZ7-Jr-gu7" secondAttribute="top" id="dwb-qW-0Gk"/>
+                            <constraint firstAttribute="trailing" secondItem="A2A-Mz-1Qu" secondAttribute="trailing" id="ebu-Qi-STT"/>
+                            <constraint firstItem="A2A-Mz-1Qu" firstAttribute="leading" secondItem="SZ7-Jr-gu7" secondAttribute="leading" id="ynF-O3-SRa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="Uyd-Em-zaq" id="YKc-ax-1y4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fto-MP-dGP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818.84057971014499" y="65.625"/>
+        </scene>
         <!--Explain View Controller-->
         <scene sceneID="xSY-dI-cJd">
             <objects>
@@ -137,6 +174,7 @@
     </scenes>
     <resources>
         <image name="background" width="750" height="1334"/>
+        <image name="crayon_gamebackground" width="828" height="1792"/>
         <image name="crayon_title" width="664" height="376"/>
         <image name="explain" width="1255" height="908"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
