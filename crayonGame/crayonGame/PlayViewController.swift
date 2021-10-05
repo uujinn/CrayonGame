@@ -10,10 +10,10 @@ import UIKit
 class PlayViewController: UIViewController{
 
     @IBOutlet weak var scoreLabel: UILabel!
-    var preys: [UIImageView] = []
+    var foods: [UIImageView] = []
     
-    var preyTimer: Timer!
-    var checkPreyTimer: Timer!
+    var foodTimer: Timer!
+    var checkFoodTimer: Timer!
     
     var player: UIImageView!
     var positionX: CGFloat!
@@ -25,23 +25,26 @@ class PlayViewController: UIViewController{
         }
     }
     
-    var location = [15,110,185,270,355]
+    // 음식 떨어지는 line
+    var location = [5,100,185,270,355]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         player = UIImageView(image: UIImage(named: "crayon_player"))
-        player.frame = CGRect(x: 170, y: 500, width: 100, height: 100)
+        player.frame = CGRect(x: 165, y: 500, width: 100, height: 100)
         self.view.addSubview(player)
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        player.frame = CGRect(x: 170, y: 500, width: 100, height: 100)
+        player.frame = CGRect(x: 165, y: 500, width: 100, height: 100)
         print("viewwillAppear")
         score = 0
         positionX = self.player.frame.origin.x
         positionY = self.player.frame.origin.y
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first!
@@ -62,21 +65,21 @@ class PlayViewController: UIViewController{
         super.viewDidAppear(animated)
 
         
-        //먹이생성.
+        // 음식 생성
         DispatchQueue.global(qos: .background).async {
-            self.preyTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
-                DispatchQueue.main.sync {
-                    self.createPrey()
+            self.foodTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
+                DispatchQueue.main.async {
+                    self.createFood()
                 }
             }
             RunLoop.current.run()
         }
        
-        // 먹이와 플레이어 충돌 타이머
+        // 음식과 플레이어 충돌 타이머
         DispatchQueue.global().async {
-            self.checkPreyTimer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { _ in
-                DispatchQueue.main.sync {
-                    self.checkPreyCollision()
+            self.checkFoodTimer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { _ in
+                DispatchQueue.main.async {
+                    self.checkFoodCollision()
                 }
             }
             RunLoop.current.run()
@@ -87,39 +90,39 @@ class PlayViewController: UIViewController{
 
 extension PlayViewController{
     
-    // 먹이 생성 함수
-    func createPrey() {
-        let prey = UIImageView(image: UIImage(named: "6.jpg"))
-        prey.contentMode = .scaleAspectFill
-        preys.append(prey)
+    // 음식 생성 함수
+    func createFood() {
+        let food = UIImageView(image: UIImage(named: "6.jpg"))
+        food.contentMode = .scaleAspectFill
+        foods.append(food)
         
-        prey.frame = CGRect(x: CGFloat(location.randomElement()!), y: -50, width: 50, height: 50)
+        food.frame = CGRect(x: CGFloat(location.randomElement()!), y: -50, width: 50, height: 50)
         // 애니메이션
-        UIView.animate(withDuration: 7.0, delay: 2.0, options: .allowUserInteraction, animations: {
-            prey.frame = CGRect(x: prey.frame.origin.x, y: 1000, width: 50, height: 50)
+        UIView.animate(withDuration: 6.0, delay: 0.0, options: .allowUserInteraction, animations: {
+            food.frame = CGRect(x: food.frame.origin.x, y: 1000, width: 50, height: 50)
         }, completion: { _ in
-            if self.preys.contains(prey) {
-                let index = self.preys.firstIndex(of: prey)
-                self.preys.remove(at: index!)
-                prey.removeFromSuperview()
+            if self.foods.contains(food) {
+                let index = self.foods.firstIndex(of: food)
+                self.foods.remove(at: index!)
+                food.removeFromSuperview()
             }
         })
-        self.view.addSubview(prey)
+        self.view.addSubview(food)
     }
     
     
     // 먹이 & 플레이어 충돌 함수
-    func checkPreyCollision() {
+    func checkFoodCollision() {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                if self.preys.count > 0 {
-                    for prey in self.preys {
-                        if let preyVal = prey.layer.presentation()?.frame {
-                            if preyVal.intersects(self.player.frame) {
-                                let index = self.preys.firstIndex(of: prey)
-                                self.preys.remove(at: index!)
-                                prey.removeFromSuperview()
-                                self.score += 10
+                if self.foods.count > 0 {
+                    for food in self.foods {
+                        if let foodValue = food.layer.presentation()?.frame {
+                            if foodValue.intersects(self.player.frame) {
+                                let index = self.foods.firstIndex(of: food)
+                                self.foods.remove(at: index!)
+                                food.removeFromSuperview()
+                                self.score += 20
                                 self.scoreLabel.text = String(self.score)
                             }
                         }
