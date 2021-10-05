@@ -52,13 +52,12 @@ class PlayViewController: UIViewController{
         
         print(touchPoint.x)
         
-        DispatchQueue.global().async { [unowned self] in
-            DispatchQueue.main.async {
-                self.player.center = CGPoint(x: (touchPoint.x), y: 550)
-                self.positionX = self.player.frame.origin.x
-                self.positionY = self.player.frame.origin.y
-            }
+        DispatchQueue.main.async {
+            self.player.center = CGPoint(x: (touchPoint.x), y: 550)
+            self.positionX = self.player.frame.origin.x
+            self.positionY = self.player.frame.origin.y
         }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
