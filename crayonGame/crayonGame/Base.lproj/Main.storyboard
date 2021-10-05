@@ -90,6 +90,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7J-fH-F2U">
+                                <rect key="frame" x="0.0" y="617" width="414" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="cAI-Ff-9vl"/>
+                                    <constraint firstAttribute="height" constant="128" id="sqc-vN-XSR"/>
+                                </constraints>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crayon_gamebackground" translatesAutoresizingMaskIntoConstraints="NO" id="A2A-Mz-1Qu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
@@ -99,20 +107,34 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vq-u0-VDe">
+                                <rect key="frame" x="329" y="66" width="65" height="33"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hci-Bh-fQt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5vq-u0-VDe" firstAttribute="top" secondItem="hci-Bh-fQt" secondAttribute="top" constant="22" id="5u3-UK-GgS"/>
+                            <constraint firstItem="c7J-fH-F2U" firstAttribute="trailing" secondItem="hci-Bh-fQt" secondAttribute="trailing" id="D6z-vp-Jqy"/>
                             <constraint firstAttribute="bottom" secondItem="A2A-Mz-1Qu" secondAttribute="bottom" id="E7c-ho-xox"/>
                             <constraint firstItem="Uyd-Em-zaq" firstAttribute="leading" secondItem="hci-Bh-fQt" secondAttribute="leading" constant="25" id="HH7-KB-cpd"/>
+                            <constraint firstItem="hci-Bh-fQt" firstAttribute="bottom" secondItem="c7J-fH-F2U" secondAttribute="bottom" constant="117" id="Wvt-q4-RcZ"/>
                             <constraint firstItem="Uyd-Em-zaq" firstAttribute="top" secondItem="hci-Bh-fQt" secondAttribute="top" constant="22" id="cbX-zY-kYz"/>
                             <constraint firstItem="A2A-Mz-1Qu" firstAttribute="top" secondItem="SZ7-Jr-gu7" secondAttribute="top" id="dwb-qW-0Gk"/>
                             <constraint firstAttribute="trailing" secondItem="A2A-Mz-1Qu" secondAttribute="trailing" id="ebu-Qi-STT"/>
+                            <constraint firstItem="c7J-fH-F2U" firstAttribute="leading" secondItem="hci-Bh-fQt" secondAttribute="leading" id="qiP-Ks-kes"/>
+                            <constraint firstItem="c7J-fH-F2U" firstAttribute="top" secondItem="Uyd-Em-zaq" secondAttribute="bottom" constant="518" id="sHI-1X-WpF"/>
                             <constraint firstItem="A2A-Mz-1Qu" firstAttribute="leading" secondItem="SZ7-Jr-gu7" secondAttribute="leading" id="ynF-O3-SRa"/>
+                            <constraint firstItem="hci-Bh-fQt" firstAttribute="trailing" secondItem="5vq-u0-VDe" secondAttribute="trailing" constant="20" id="zXl-3i-Khe"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="scoreLabel" destination="Uyd-Em-zaq" id="YKc-ax-1y4"/>
+                        <outlet property="timerLabel" destination="5vq-u0-VDe" id="nS0-VY-ucc"/>
+                        <outlet property="toothView" destination="c7J-fH-F2U" id="nDM-ib-GeP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fto-MP-dGP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
