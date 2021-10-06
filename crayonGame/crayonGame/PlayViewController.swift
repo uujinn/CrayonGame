@@ -11,6 +11,7 @@ class PlayViewController: UIViewController{
 
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var teethLabel: UILabel!
     @IBOutlet weak var toothView: UIView!
     var foods: [UIImageView] = []
     var items: [UIImageView] = []
@@ -34,6 +35,12 @@ class PlayViewController: UIViewController{
         }
     }
     
+    var teeth: Int = 3{
+        didSet {
+            teethLabel.text = "🦷 : \(teeth)"
+        }
+    }
+    
     // 음식 떨어지는 line
     var location = [5,100,185,270,355]
     
@@ -42,6 +49,7 @@ class PlayViewController: UIViewController{
         player = UIImageView(image: UIImage(named: "crayon_player"))
         player.frame = CGRect(x: 165, y: 500, width: 100, height: 100)
         self.view.addSubview(player)
+        
 
     }
     
@@ -51,6 +59,7 @@ class PlayViewController: UIViewController{
         score = 0
         positionX = self.player.frame.origin.x
         positionY = self.player.frame.origin.y
+        teethLabel.text = "🦷 : \(teeth)"
         timerLabel.text = "⏳ : " + String(60-mainCount) + "초"
 
     }
@@ -121,7 +130,7 @@ class PlayViewController: UIViewController{
             RunLoop.current.run()
         }
         
-        // 이빨 충돌 타이머
+        // 음식 & 이빨 충돌 타이머
         DispatchQueue.global().async {
             self.checkitemTimer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { _ in
                 DispatchQueue.main.async {
@@ -131,7 +140,7 @@ class PlayViewController: UIViewController{
             RunLoop.current.run()
         }
         
-        // 이빨 충돌 타이머
+        // 좋은 음식 & 이빨 충돌 타이머
         DispatchQueue.global().async {
             self.checkitemTimer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { _ in
                 DispatchQueue.main.async {
@@ -168,12 +177,14 @@ class PlayViewController: UIViewController{
                 mainTimer.invalidate()
                 mainTimerCounting = false
                 print("😇 게임 종료")
-                // 다음 컨트롤러에 대한 인스턴스 생성
-//                guard let vc = storyboard?.instantiateViewController(withIdentifier: "GameOverViewController") as? GameOverViewController else { return }
-//                vc.score = score
-//                vc.modalPresentationStyle = .fullScreen
-//                // 화면을 전환하다.
-//                present(vc, animated: true)
+                DispatchQueue.main.async {
+                    guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalVC") as? FinalViewController else { return }
+        //                vc.score = score
+                    vc.modalPresentationStyle = .fullScreen
+                    // 화면을 전환하다.
+                    self.present(vc, animated: true)
+                }
+
             }
     }
 }
@@ -201,7 +212,7 @@ extension PlayViewController{
         self.view.addSubview(food)
     }
     
-    // 음식 생성 함수
+    // 좋은 음식 생성 함수
     func createItem() {
         let food = UIImageView(image: UIImage(named: "good_\(Int.random(in: 1...3))"))
         food.contentMode = .scaleAspectFill
@@ -234,7 +245,7 @@ extension PlayViewController{
                                 self.foods.remove(at: index!)
                                 food.removeFromSuperview()
                                 self.score += 20
-                                self.scoreLabel.text = String(self.score)
+                                self.scoreLabel.text = String("Score: \(self.score)")
                             }
                         }
                     }
@@ -243,7 +254,7 @@ extension PlayViewController{
         }
     }
     
-    // 음식 & 플레이어 충돌 함수
+    // 좋은 음식 & 플레이어 충돌 함수
     func checkItemCollision() {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
@@ -254,8 +265,7 @@ extension PlayViewController{
                                 let index = self.items.firstIndex(of: food)
                                 self.items.remove(at: index!)
                                 food.removeFromSuperview()
-                                self.score += 0
-                                self.scoreLabel.text = String(self.score)
+                                self.scoreLabel.text = String("Score: \(self.score)")
                             }
                         }
                     }
@@ -275,8 +285,16 @@ extension PlayViewController{
                                 let index = self.foods.firstIndex(of: food)
                                 self.foods.remove(at: index!)
                                 food.removeFromSuperview()
-                                self.score -= 20
-                                self.scoreLabel.text = String(self.score)
+                                self.teeth -= 1
+                                self.scoreLabel.text = String("Score: \(self.score)")
+                                self.teethLabel.text = String("🦷 : \(self.teeth)")
+                                if (self.teeth < 1){
+                                    guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalVC") as? FinalViewController else { return }
+                        //                vc.score = score
+                                    vc.modalPresentationStyle = .fullScreen
+                                    // 화면을 전환하다.
+                                    self.present(vc, animated: true)
+                                }
                             }
                         }
                     }
@@ -296,8 +314,8 @@ extension PlayViewController{
                                 let index = self.items.firstIndex(of: food)
                                 self.items.remove(at: index!)
                                 food.removeFromSuperview()
-                                self.score += 10
-                                self.scoreLabel.text = String(self.score)
+                                self.score += 20
+                                self.scoreLabel.text = String("Score: \(self.score)")
                             }
                         }
                     }

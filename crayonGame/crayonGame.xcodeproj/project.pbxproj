@@ -16,6 +16,7 @@
 		0A1D1DBF270A094500B6C378 /* ExplainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D1DBE270A094500B6C378 /* ExplainViewController.swift */; };
 		0A1D1DC5270B481A00B6C378 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D1DC4270B481A00B6C378 /* PlayViewController.swift */; };
 		0A1D1DC7270B48CF00B6C378 /* explainSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D1DC6270B48CF00B6C378 /* explainSound.mp3 */; };
+		0A1D1DC9270D7B3A00B6C378 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D1DC8270D7B3A00B6C378 /* FinalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0A1D1DBE270A094500B6C378 /* ExplainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplainViewController.swift; sourceTree = "<group>"; };
 		0A1D1DC4270B481A00B6C378 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		0A1D1DC6270B48CF00B6C378 /* explainSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explainSound.mp3; sourceTree = "<group>"; };
+		0A1D1DC8270D7B3A00B6C378 /* FinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				0A1D1DAE270A00AF00B6C378 /* ViewController.swift */,
 				0A1D1DB0270A00AF00B6C378 /* Main.storyboard */,
+				0A1D1DC8270D7B3A00B6C378 /* FinalViewController.swift */,
 				0A1D1DC4270B481A00B6C378 /* PlayViewController.swift */,
 				0A1D1DBE270A094500B6C378 /* ExplainViewController.swift */,
 				0A1D1DC0270A131E00B6C378 /* Sound */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1D1DAF270A00AF00B6C378 /* ViewController.swift in Sources */,
+				0A1D1DC9270D7B3A00B6C378 /* FinalViewController.swift in Sources */,
 				0A1D1DC5270B481A00B6C378 /* PlayViewController.swift in Sources */,
 				0A1D1DAB270A00AF00B6C378 /* AppDelegate.swift in Sources */,
 				0A1D1DBF270A094500B6C378 /* ExplainViewController.swift in Sources */,

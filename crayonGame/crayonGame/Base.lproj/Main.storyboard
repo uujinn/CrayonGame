@@ -101,15 +101,21 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crayon_gamebackground" translatesAutoresizingMaskIntoConstraints="NO" id="A2A-Mz-1Qu">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-Em-zaq">
-                                <rect key="frame" x="25" y="66" width="65" height="33"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXy-Oy-FVV">
+                                <rect key="frame" x="20" y="66" width="59" height="30"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vq-u0-VDe">
-                                <rect key="frame" x="329" y="66" width="65" height="33"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="30"/>
+                                <rect key="frame" x="333.5" y="66" width="60.5" height="30.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-Em-zaq">
+                                <rect key="frame" x="20" y="106" width="59" height="30"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -117,22 +123,24 @@
                         <viewLayoutGuide key="safeArea" id="hci-Bh-fQt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5vq-u0-VDe" firstAttribute="top" secondItem="hci-Bh-fQt" secondAttribute="top" constant="22" id="5u3-UK-GgS"/>
                             <constraint firstItem="c7J-fH-F2U" firstAttribute="trailing" secondItem="hci-Bh-fQt" secondAttribute="trailing" id="D6z-vp-Jqy"/>
                             <constraint firstAttribute="bottom" secondItem="A2A-Mz-1Qu" secondAttribute="bottom" id="E7c-ho-xox"/>
-                            <constraint firstItem="Uyd-Em-zaq" firstAttribute="leading" secondItem="hci-Bh-fQt" secondAttribute="leading" constant="25" id="HH7-KB-cpd"/>
+                            <constraint firstItem="Uyd-Em-zaq" firstAttribute="leading" secondItem="hci-Bh-fQt" secondAttribute="leading" constant="20" id="SpY-Im-cdq"/>
                             <constraint firstItem="hci-Bh-fQt" firstAttribute="bottom" secondItem="c7J-fH-F2U" secondAttribute="bottom" constant="117" id="Wvt-q4-RcZ"/>
-                            <constraint firstItem="Uyd-Em-zaq" firstAttribute="top" secondItem="hci-Bh-fQt" secondAttribute="top" constant="22" id="cbX-zY-kYz"/>
+                            <constraint firstItem="hci-Bh-fQt" firstAttribute="trailing" secondItem="5vq-u0-VDe" secondAttribute="trailing" constant="20" id="YR0-0S-wqP"/>
                             <constraint firstItem="A2A-Mz-1Qu" firstAttribute="top" secondItem="SZ7-Jr-gu7" secondAttribute="top" id="dwb-qW-0Gk"/>
                             <constraint firstAttribute="trailing" secondItem="A2A-Mz-1Qu" secondAttribute="trailing" id="ebu-Qi-STT"/>
+                            <constraint firstItem="5vq-u0-VDe" firstAttribute="top" secondItem="hci-Bh-fQt" secondAttribute="top" constant="22" id="h3H-Th-4hi"/>
+                            <constraint firstItem="Uyd-Em-zaq" firstAttribute="top" secondItem="bXy-Oy-FVV" secondAttribute="bottom" constant="10" id="njj-7T-IhW"/>
                             <constraint firstItem="c7J-fH-F2U" firstAttribute="leading" secondItem="hci-Bh-fQt" secondAttribute="leading" id="qiP-Ks-kes"/>
-                            <constraint firstItem="c7J-fH-F2U" firstAttribute="top" secondItem="Uyd-Em-zaq" secondAttribute="bottom" constant="518" id="sHI-1X-WpF"/>
+                            <constraint firstItem="bXy-Oy-FVV" firstAttribute="leading" secondItem="hci-Bh-fQt" secondAttribute="leading" constant="20" id="sMe-yj-ce8"/>
+                            <constraint firstItem="bXy-Oy-FVV" firstAttribute="top" secondItem="hci-Bh-fQt" secondAttribute="top" constant="22" id="uNd-vv-bPq"/>
                             <constraint firstItem="A2A-Mz-1Qu" firstAttribute="leading" secondItem="SZ7-Jr-gu7" secondAttribute="leading" id="ynF-O3-SRa"/>
-                            <constraint firstItem="hci-Bh-fQt" firstAttribute="trailing" secondItem="5vq-u0-VDe" secondAttribute="trailing" constant="20" id="zXl-3i-Khe"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="scoreLabel" destination="Uyd-Em-zaq" id="YKc-ax-1y4"/>
+                        <outlet property="teethLabel" destination="bXy-Oy-FVV" id="DSI-Sz-qbw"/>
                         <outlet property="timerLabel" destination="5vq-u0-VDe" id="nS0-VY-ucc"/>
                         <outlet property="toothView" destination="c7J-fH-F2U" id="nDM-ib-GeP"/>
                     </connections>
@@ -192,6 +200,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jaz-ZF-76h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40.579710144927539" y="738.61607142857144"/>
+        </scene>
+        <!--Final View Controller-->
+        <scene sceneID="u9O-eq-5qA">
+            <objects>
+                <viewController storyboardIdentifier="FinalVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AGx-Gd-iri" customClass="FinalViewController" customModule="crayonGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bc1-s0-rhl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Qdk-1U-Ack"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12X-IS-xxE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="819" y="757"/>
         </scene>
     </scenes>
     <resources>
