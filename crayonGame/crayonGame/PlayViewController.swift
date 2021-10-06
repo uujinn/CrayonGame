@@ -26,7 +26,7 @@ class PlayViewController: UIViewController{
     var positionY: CGFloat!
     
     var mainTimer:Timer = Timer()
-    var mainCount:Int = 0
+    var mainCount:Int = 50
     var mainTimerCounting:Bool = false
     
     var score: Int = 0 {
@@ -49,7 +49,7 @@ class PlayViewController: UIViewController{
         player = UIImageView(image: UIImage(named: "crayon_player"))
         player.frame = CGRect(x: 165, y: 500, width: 100, height: 100)
         self.view.addSubview(player)
-        
+        mainCount = 50
 
     }
     
@@ -57,10 +57,13 @@ class PlayViewController: UIViewController{
         super.viewWillAppear(animated)
         player.frame = CGRect(x: 165, y: 500, width: 100, height: 100)
         score = 0
+        teeth = 3
         positionX = self.player.frame.origin.x
         positionY = self.player.frame.origin.y
         teethLabel.text = "🦷 : \(teeth)"
-        timerLabel.text = "⏳ : " + String(60-mainCount) + "초"
+        timerLabel.text = "⏳ : " + String(60-mainCount) + "s"
+
+        mainCount = 50
 
     }
     
@@ -81,7 +84,6 @@ class PlayViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         // 타이머 가동
         DispatchQueue.global(qos: .background).async{
             self.mainLoop()
@@ -167,16 +169,16 @@ class PlayViewController: UIViewController{
         {
             mainCount = mainCount + 1
             
-            if(mainCount<=60){
-                print("⏳ : " + String(60-mainCount) + "초")
+            if(mainCount<60){
+                print("⏳ : " + String(60-mainCount) + "s")
                 DispatchQueue.main.async {
-                    self.timerLabel.text = "⏳ : " + String(60-self.mainCount) + "초"
+                    self.timerLabel.text = "⏳ : " + String(60-self.mainCount) + "s"
                 }
             }
             else{
                 mainTimer.invalidate()
                 mainTimerCounting = false
-                print("😇 게임 종료")
+                print("게임 종료")
                 DispatchQueue.main.async {
                     guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalVC") as? FinalViewController else { return }
         //                vc.score = score
