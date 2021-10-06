@@ -218,8 +218,14 @@
                                 <color key="textColor" red="0.91764706370000004" green="0.27450981740000002" blue="0.231372565" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best: 500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pj4-yv-NSE">
-                                <rect key="frame" x="129.5" y="302.5" width="155" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best: 500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xd-xa-j76">
+                                <rect key="frame" x="129.5" y="231.5" width="155" height="38"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pj4-yv-NSE">
+                                <rect key="frame" x="119" y="302.5" width="176" height="38"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -239,12 +245,22 @@
                                     <action selector="pressedAgainButton:" destination="AGx-Gd-iri" eventType="touchUpInside" id="vdc-6a-w0k"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xd-xa-j76">
-                                <rect key="frame" x="119" y="231.5" width="176" height="38"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44f-8p-SYd">
+                                <rect key="frame" x="87" y="670" width="240" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="MK7-7B-SlR"/>
+                                    <constraint firstAttribute="height" constant="60" id="q0D-cb-OIC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedAgainButton:" destination="AGx-Gd-iri" eventType="touchUpInside" id="BSo-de-ytx"/>
+                                    <action selector="pressedGameOver:" destination="AGx-Gd-iri" eventType="touchUpInside" id="BDg-FH-Qms"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qdk-1U-Ack"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -259,13 +275,18 @@
                             <constraint firstItem="1Xd-xa-j76" firstAttribute="centerX" secondItem="bc1-s0-rhl" secondAttribute="centerX" id="PQ1-ib-d9c"/>
                             <constraint firstItem="Z45-Du-cwy" firstAttribute="leading" secondItem="Qdk-1U-Ack" secondAttribute="leading" constant="26" id="Si7-rI-SVD"/>
                             <constraint firstItem="Qdk-1U-Ack" firstAttribute="trailing" secondItem="Z45-Du-cwy" secondAttribute="trailing" constant="26" id="TIb-sf-USg"/>
+                            <constraint firstItem="Qdk-1U-Ack" firstAttribute="trailing" secondItem="44f-8p-SYd" secondAttribute="trailing" constant="87" id="XEp-vg-9JK"/>
                             <constraint firstItem="pj4-yv-NSE" firstAttribute="top" secondItem="1Xd-xa-j76" secondAttribute="bottom" constant="33" id="ZHL-01-3Kl"/>
                             <constraint firstItem="1Xd-xa-j76" firstAttribute="top" secondItem="Z45-Du-cwy" secondAttribute="bottom" constant="35" id="gUy-ve-JKK"/>
+                            <constraint firstItem="44f-8p-SYd" firstAttribute="top" secondItem="Tyo-rR-Azz" secondAttribute="bottom" constant="8" symbolic="YES" id="jeB-BG-N7F"/>
                             <constraint firstAttribute="bottom" secondItem="wqI-qD-dgh" secondAttribute="bottom" id="q49-Sj-8Gm"/>
                             <constraint firstItem="Qdk-1U-Ack" firstAttribute="trailing" secondItem="Tyo-rR-Azz" secondAttribute="trailing" constant="87" id="wRH-5O-Vao"/>
+                            <constraint firstItem="44f-8p-SYd" firstAttribute="leading" secondItem="Qdk-1U-Ack" secondAttribute="leading" constant="87" id="xug-0n-SeK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bestScoreLabel" destination="1Xd-xa-j76" id="qjG-GW-EXh"/>
+                        <outlet property="scoreLabel" destination="pj4-yv-NSE" id="zoG-5s-dVy"/>
                         <outlet property="stateLabel" destination="Z45-Du-cwy" id="AYf-vN-jPo"/>
                     </connections>
                 </viewController>

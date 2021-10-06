@@ -181,7 +181,7 @@ class PlayViewController: UIViewController{
                 print("게임 종료")
                 DispatchQueue.main.async {
                     guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalVC") as? FinalViewController else { return }
-        //                vc.score = score
+                    vc.score = self.score
                     vc.modalPresentationStyle = .fullScreen
                     // 화면을 전환하다.
                     self.present(vc, animated: true)
@@ -292,7 +292,7 @@ extension PlayViewController{
                                 self.teethLabel.text = String("🦷 : \(self.teeth)")
                                 if (self.teeth < 1){
                                     guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalVC") as? FinalViewController else { return }
-                        //                vc.score = score
+                                    vc.score = self.score
                                     vc.modalPresentationStyle = .fullScreen
                                     // 화면을 전환하다.
                                     self.present(vc, animated: true)
