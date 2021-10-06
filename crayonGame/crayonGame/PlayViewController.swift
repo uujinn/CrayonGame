@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlayViewController: UIViewController{
 
@@ -13,6 +14,7 @@ class PlayViewController: UIViewController{
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var teethLabel: UILabel!
     @IBOutlet weak var toothView: UIView!
+    @IBOutlet weak var soundBtn: UIButton!
     var foods: [UIImageView] = []
     var items: [UIImageView] = []
     
@@ -26,9 +28,11 @@ class PlayViewController: UIViewController{
     var positionY: CGFloat!
     
     var mainTimer:Timer = Timer()
-    var mainCount:Int = 50
+    var mainCount:Int = 20
     var mainTimerCounting:Bool = false
     
+    var soundOn: Bool = true
+    var i = 0
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
@@ -41,15 +45,25 @@ class PlayViewController: UIViewController{
         }
     }
     
+    var audioPlayer = AVAudioPlayer()
+    
     // 음식 떨어지는 line
     var location = [5,100,185,270,355]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do{
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "crayon_sound", ofType: "mp3")!))
+            audioPlayer.play()
+        }
+        catch{
+            print(error)
+        }
+        
         player = UIImageView(image: UIImage(named: "crayon_player"))
         player.frame = CGRect(x: 165, y: 500, width: 100, height: 100)
         self.view.addSubview(player)
-        mainCount = 50
+        mainCount = 20
 
     }
     
@@ -63,7 +77,7 @@ class PlayViewController: UIViewController{
         teethLabel.text = "🦷 : \(teeth)"
         timerLabel.text = "⏳ : " + String(60-mainCount) + "s"
 
-        mainCount = 50
+        mainCount = 20
 
     }
     
@@ -72,7 +86,7 @@ class PlayViewController: UIViewController{
         let touch = touches.first!
         let touchPoint = touch.location(in: self.view)
         
-        print(touchPoint.y)
+//        print(touchPoint.y)
         
         DispatchQueue.main.async {
             self.player.center = CGPoint(x: (touchPoint.x), y: 550)
@@ -82,6 +96,9 @@ class PlayViewController: UIViewController{
 
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        audioPlayer.stop()
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // 타이머 가동
@@ -90,13 +107,15 @@ class PlayViewController: UIViewController{
         }
         
         // 음식 생성
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global().async {
+            let isrunning = true
             // 타이머 가동
             self.foodTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
                 DispatchQueue.main.async {
                     self.createFood()
                 }
             }
+            self.i += 1
             RunLoop.current.run()
         }
        
@@ -112,7 +131,7 @@ class PlayViewController: UIViewController{
         
         
         // 음식 생성
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global().async {
             // 타이머 가동
             self.itemTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
                 DispatchQueue.main.async {
@@ -189,6 +208,18 @@ class PlayViewController: UIViewController{
 
             }
     }
+    @IBAction func manageSound(_ sender: Any) {
+        if soundOn{
+            audioPlayer.stop()
+            soundOn = false
+            soundBtn.imageView?.image = UIImage(named:"speaker.slash")
+        }else{
+            audioPlayer.play()
+            soundOn = true
+            soundBtn.imageView?.image = UIImage(named:"speaker.wave.1")
+        }
+
+    }
 }
 
 
@@ -196,6 +227,7 @@ extension PlayViewController{
     
     // 음식 생성 함수
     func createFood() {
+        print("i= \(i)")
         let food = UIImageView(image: UIImage(named: "bad_\(Int.random(in: 1...4))"))
         food.contentMode = .scaleAspectFill
         foods.append(food)
@@ -237,7 +269,7 @@ extension PlayViewController{
     
     // 음식 & 플레이어 충돌 함수
     func checkFoodCollision() {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global().async {
             DispatchQueue.main.async {
                 if self.foods.count > 0 {
                     for food in self.foods {

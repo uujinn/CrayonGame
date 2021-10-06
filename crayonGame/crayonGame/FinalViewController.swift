@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class FinalViewController: UIViewController {
 
@@ -16,12 +17,21 @@ class FinalViewController: UIViewController {
     var bestScore: Int = 0
     var score: Int = 0
     
+    var audioPlayer = AVAudioPlayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scoreLabel.text = "Score: \(score)"
         bestScore = UserDefaults.standard.integer(forKey: "bestScore")
         updateScore()
 
+        do{
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "crayon_gameover", ofType: "mp3")!))
+            audioPlayer.play()
+        }
+        catch{
+            print(error)
+        }
     }
     
     @IBAction func pressedAgainButton(_ sender: Any) {

@@ -17,6 +17,8 @@
 		0A1D1DC5270B481A00B6C378 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D1DC4270B481A00B6C378 /* PlayViewController.swift */; };
 		0A1D1DC7270B48CF00B6C378 /* explainSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D1DC6270B48CF00B6C378 /* explainSound.mp3 */; };
 		0A1D1DC9270D7B3A00B6C378 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D1DC8270D7B3A00B6C378 /* FinalViewController.swift */; };
+		0A1D1DCB270DCB7C00B6C378 /* crayon_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D1DCA270DCB7C00B6C378 /* crayon_sound.mp3 */; };
+		0A1D1DCD270DD04600B6C378 /* crayon_gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D1DCC270DD04600B6C378 /* crayon_gameover.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		0A1D1DC4270B481A00B6C378 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		0A1D1DC6270B48CF00B6C378 /* explainSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explainSound.mp3; sourceTree = "<group>"; };
 		0A1D1DC8270D7B3A00B6C378 /* FinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
+		0A1D1DCA270DCB7C00B6C378 /* crayon_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crayon_sound.mp3; sourceTree = "<group>"; };
+		0A1D1DCC270DD04600B6C378 /* crayon_gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crayon_gameover.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 		0A1D1DC0270A131E00B6C378 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				0A1D1DCC270DD04600B6C378 /* crayon_gameover.mp3 */,
+				0A1D1DCA270DCB7C00B6C378 /* crayon_sound.mp3 */,
 				0A1D1DC6270B48CF00B6C378 /* explainSound.mp3 */,
 			);
 			path = Sound;
@@ -155,6 +161,8 @@
 			files = (
 				0A1D1DC7270B48CF00B6C378 /* explainSound.mp3 in Resources */,
 				0A1D1DB7270A00B000B6C378 /* LaunchScreen.storyboard in Resources */,
+				0A1D1DCD270DD04600B6C378 /* crayon_gameover.mp3 in Resources */,
+				0A1D1DCB270DCB7C00B6C378 /* crayon_sound.mp3 in Resources */,
 				0A1D1DB4270A00B000B6C378 /* Assets.xcassets in Resources */,
 				0A1D1DB2270A00AF00B6C378 /* Main.storyboard in Resources */,
 			);
