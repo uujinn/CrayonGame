@@ -28,7 +28,7 @@ class PlayViewController: UIViewController{
     var positionY: CGFloat!
     
     var mainTimer:Timer = Timer()
-    var mainCount:Int = 20
+    var mainCount:Int = 30
     var mainTimerCounting:Bool = false
     
     var soundOn: Bool = true
@@ -44,6 +44,8 @@ class PlayViewController: UIViewController{
             teethLabel.text = "🦷 : \(teeth)"
         }
     }
+    
+    var isrunning = true
     
     var audioPlayer = AVAudioPlayer()
     
@@ -63,7 +65,7 @@ class PlayViewController: UIViewController{
         player = UIImageView(image: UIImage(named: "crayon_player"))
         player.frame = CGRect(x: 165, y: 500, width: 100, height: 100)
         self.view.addSubview(player)
-        mainCount = 20
+        mainCount = 30
 
     }
     
@@ -77,7 +79,8 @@ class PlayViewController: UIViewController{
         teethLabel.text = "🦷 : \(teeth)"
         timerLabel.text = "⏳ : " + String(60-mainCount) + "s"
 
-        mainCount = 20
+        mainCount = 30
+        isrunning = true
 
     }
     
@@ -98,7 +101,10 @@ class PlayViewController: UIViewController{
     
     override func viewDidDisappear(_ animated: Bool) {
         audioPlayer.stop()
+        isrunning = false
+        print(isrunning)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // 타이머 가동
@@ -108,15 +114,17 @@ class PlayViewController: UIViewController{
         
         // 음식 생성
         DispatchQueue.global().async {
-            let isrunning = true
+            let runLoop = RunLoop.current
             // 타이머 가동
             self.foodTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
                 DispatchQueue.main.async {
                     self.createFood()
                 }
             }
-            self.i += 1
-            RunLoop.current.run()
+            
+            while self.isrunning{
+                runLoop.run()
+            }
         }
        
         // 음식과 플레이어 충돌 타이머
@@ -132,13 +140,16 @@ class PlayViewController: UIViewController{
         
         // 음식 생성
         DispatchQueue.global().async {
+            let runLoop = RunLoop.current
             // 타이머 가동
-            self.itemTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+            self.foodTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
                 DispatchQueue.main.async {
                     self.createItem()
                 }
             }
-            RunLoop.current.run()
+            while self.isrunning{
+                runLoop.run()
+            }
         }
        
         // 음식과 플레이어 충돌 타이머
@@ -197,7 +208,6 @@ class PlayViewController: UIViewController{
             else{
                 mainTimer.invalidate()
                 mainTimerCounting = false
-                print("게임 종료")
                 DispatchQueue.main.async {
                     guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalVC") as? FinalViewController else { return }
                     vc.score = self.score
@@ -227,14 +237,13 @@ extension PlayViewController{
     
     // 음식 생성 함수
     func createFood() {
-        print("i= \(i)")
         let food = UIImageView(image: UIImage(named: "bad_\(Int.random(in: 1...4))"))
         food.contentMode = .scaleAspectFill
         foods.append(food)
         
         food.frame = CGRect(x: CGFloat(location.randomElement()!), y: -50, width: 50, height: 50)
         // 애니메이션
-        UIView.animate(withDuration: 6.0, delay: 0.0, options: .allowUserInteraction, animations: {
+        UIView.animate(withDuration: 8.0, delay: 0.0, options: .allowUserInteraction, animations: {
             food.frame = CGRect(x: food.frame.origin.x, y: 1000, width: 50, height: 50)
         }, completion: { _ in
             if self.foods.contains(food) {
@@ -254,7 +263,7 @@ extension PlayViewController{
         
         food.frame = CGRect(x: CGFloat(location.randomElement()!), y: -50, width: 50, height: 50)
         // 애니메이션
-        UIView.animate(withDuration: 6.0, delay: 0.0, options: .allowUserInteraction, animations: {
+        UIView.animate(withDuration: 10.0, delay: 0.0, options: .allowUserInteraction, animations: {
             food.frame = CGRect(x: food.frame.origin.x, y: 1000, width: 50, height: 50)
         }, completion: { _ in
             if self.items.contains(food) {
