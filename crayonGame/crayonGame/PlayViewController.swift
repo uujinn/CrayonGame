@@ -28,7 +28,7 @@ class PlayViewController: UIViewController{
     var positionY: CGFloat!
     
     var mainTimer:Timer = Timer()
-    var mainCount:Int = 30
+    var mainCount:Int = 20
     var mainTimerCounting:Bool = false
     
     var soundOn: Bool = true
@@ -65,12 +65,13 @@ class PlayViewController: UIViewController{
         player = UIImageView(image: UIImage(named: "crayon_player"))
         player.frame = CGRect(x: 165, y: 500, width: 100, height: 100)
         self.view.addSubview(player)
-        mainCount = 30
+        mainCount = 20
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         player.frame = CGRect(x: 165, y: 500, width: 100, height: 100)
         score = 0
         teeth = 3
@@ -78,8 +79,8 @@ class PlayViewController: UIViewController{
         positionY = self.player.frame.origin.y
         teethLabel.text = "🦷 : \(teeth)"
         timerLabel.text = "⏳ : " + String(60-mainCount) + "s"
-
-        mainCount = 30
+        
+        mainCount = 20
         isrunning = true
 
     }
@@ -99,14 +100,27 @@ class PlayViewController: UIViewController{
 
     }
     
+    
     override func viewDidDisappear(_ animated: Bool) {
         audioPlayer.stop()
         isrunning = false
-        print(isrunning)
+        mainTimer.invalidate()
+        itemTimer.invalidate()
+        foodTimer.invalidate()
+        checkitemTimer.invalidate()
+        checkFoodTimer.invalidate()
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if soundOn{
+            audioPlayer.play()
+        }else{
+            audioPlayer.stop()
+        }
         // 타이머 가동
         DispatchQueue.global(qos: .background).async{
             self.mainLoop()
@@ -142,7 +156,7 @@ class PlayViewController: UIViewController{
         DispatchQueue.global().async {
             let runLoop = RunLoop.current
             // 타이머 가동
-            self.foodTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
+            self.itemTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
                 DispatchQueue.main.async {
                     self.createItem()
                 }
@@ -200,7 +214,7 @@ class PlayViewController: UIViewController{
             mainCount = mainCount + 1
             
             if(mainCount<60){
-                print("⏳ : " + String(60-mainCount) + "s")
+                print(String(60-mainCount) + "s")
                 DispatchQueue.main.async {
                     self.timerLabel.text = "⏳ : " + String(60-self.mainCount) + "s"
                 }
