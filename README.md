@@ -14,7 +14,7 @@
     - Player가 음식을 막지 못하면 (이빨에 닿으면) 음식은 사라진다.
     - 목표 점수에 도달하면 Game Clear
     - 이빨 3개가 썩으면 Game Over
-    - BGM은 끄고 킬 수 있다.
+    - BGM: `AVFoundation` 사용
     
 ### 시작 화면
 <img src = "https://user-images.githubusercontent.com/70887135/153410072-160d5302-ac35-4fb9-b570-e54d28be6e45.png" width="25%" height="25%">
@@ -29,13 +29,13 @@
 - `Thread` , `GCD`, `동기`, `비동기`
     - 전체 타이머 가동
     - 음식 생성, 반복
-    - 음식와 플레이어의 충돌 판단 (`intersects`)
+    - 음식와 플레이어의 충돌 판단: `intersects` 사용
 
 
 ### 게임 종료
 <img src = "https://user-images.githubusercontent.com/70887135/153410762-138fea55-53c6-4c65-b361-3ff7f5bc0ae5.png" width="25%" height="25%">
 
 - 최고기록 달성 시 `UserDefaults`를 이용해 갱신
-- Replay / EXIT 가능
+- `Replay` / `EXIT` 가능
 
 
