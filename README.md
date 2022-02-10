@@ -14,7 +14,9 @@
     - Player가 음식을 막지 못하면 (이빨에 닿으면) 음식은 사라진다.
     - 목표 점수에 도달하면 Game Clear
     - 이빨 3개가 썩으면 Game Over
-    - BGM: `AVFoundation` 사용
+    - BGM
+      - AVFoundation 사용 
+      - Turn on/off 가능
     
 ### 시작 화면
 <img src = "https://user-images.githubusercontent.com/70887135/153410072-160d5302-ac35-4fb9-b570-e54d28be6e45.png" width="25%" height="25%">
